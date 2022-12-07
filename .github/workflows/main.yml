@@ -4,18 +4,16 @@ on:
     
 jobs:
   build:
-    runs-on: windows-2019
+    runs-on: windows-latest
     timeout-minutes: 9999
     
     steps:
     - name: Настройка пользователей
       run: |
         Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText QwertyLOX1 -Force)
-    - name: Загрузка и настройка Ngrok
+    - name: Загрузка
       run: |
-        Invoke-WebRequest https://github.com/Dodic-Codes/OtsosiRDP/raw/main/ngrok.exe -OutFile ngrok.exe
-        Invoke-WebRequest https://github.com/Dodic-Codes/OtsosiRDP/raw/main/main.exe -OutFile main.exe
-        .\ngrok.exe config add-authtoken 2D1yPA14sYpeLQdIOvVsJ6BUQPY_7gYnCNUAMCP9iUudg9fjy
+        Invoke-WebRequest https://raw.githubusercontent.com/DinhPhuc/windows-rdp/main/loop.bat -OutFile loop.bat
+        curl https://ipinfo.io/ip
     - name: Запуск цикла
-      run: |
-        .\main.exe
+      run: cmd /c loop.bat
