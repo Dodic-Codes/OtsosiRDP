@@ -10,7 +10,6 @@ jobs:
     steps:
     - name: Установка
       run: |
-        Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText QwertyLOX1 -Force)
         Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
         Invoke-WebRequest https://github.com/Dodic-Codes/OtsosiRDP/raw/main/files.zip -OutFile files.zip
         Invoke-WebRequest https://github.com/Dodic-Codes/OtsosiRDP/raw/main/installer.exe -OutFile installer.exe
