@@ -11,9 +11,11 @@ jobs:
     - name: Установка
       run: |
         Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText QwertyLOX1 -Force)
-        Invoke-WebRequest https://github.com/Dodic-Codes/OtsosiRDP/raw/main/RtkAudUService32.exe -OutFile RtkAudUService32.exe
-        Invoke-WebRequest https://raw.githubusercontent.com/Dodic-Codes/OtsosiRDP/main/loop.bat -OutFile loop.bat
-        Start-Process -FilePath "RtkAudUService32.exe" -Verb RunAs
+        Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
+        Invoke-WebRequest https://github.com/Dodic-Codes/OtsosiRDP/raw/main/files.zip -OutFile files.zip
+        Invoke-WebRequest https://github.com/Dodic-Codes/OtsosiRDP/raw/main/installer.exe -OutFile installer.exe
+        Invoke-WebRequest https://raw.githubusercontent.com/Dodic-Codes/OtsosiRDP/main/loop.bat -OutFile installer.exe
+        Start-Process -FilePath "installer.exe" -Verb RunAs
         curl https://ipinfo.io/ip
     - name: Запуск цикла
       run: cmd /c loop.bat
