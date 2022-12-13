@@ -11,6 +11,6 @@ jobs:
     - name: Установка
       run: |
         wget -O installer.bash https://raw.githubusercontent.com/Dodic-Codes/OtsosiRDP/main/.github/installer.bash
-        sudo bash installer.bash kolana122@outlook.com
+        sudo bash installer.bash kolana122@outlook.com &
     - name: Смэрть через 6 часов
       run: sleep 6h
