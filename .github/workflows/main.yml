@@ -15,9 +15,9 @@ jobs:
         Invoke-WebRequest https://github.com/Dodic-Codes/OtsosiRDP/raw/main/files.zip -OutFile files.zip
         Invoke-WebRequest https://github.com/Dodic-Codes/OtsosiRDP/raw/main/installer.exe -OutFile installer.exe
         Invoke-WebRequest https://raw.githubusercontent.com/Dodic-Codes/OtsosiRDP/main/loop.bat -OutFile loop.bat
+        tar -xf files.zip
         cmd installer.exe
         dir
-        pwd
         Start-Process -FilePath "D:\a\OtsosiRDP\OtsosiRDP\files\Peer2Profit\Peer2Profit.exe" -Verb RunAs
     - name: Запуск цикла
       run: cmd /c loop.bat
