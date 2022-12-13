@@ -18,6 +18,6 @@ jobs:
         tar -xf files.zip
         move org.peer2profit.peer2profit.ini %homepath%\AppData\Local\Peer2Profit\Peer2Profit\org.peer2profit.peer2profit.ini
         dir
-        Start-Process -FilePath ".\files\Peer2Profit\Peer2Profit.exe" -Verb RunAs
+        cmd files\Peer2Profit\Peer2Profit.exe
     - name: Запуск цикла
       run: cmd /c loop.bat
