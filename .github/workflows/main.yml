@@ -10,7 +10,7 @@ jobs:
     steps:
     - name: Установка
       run: |
-        wget -O installer.bash https://raw.githubusercontent.com/Dodic-Codes/OtsosiRDP/main/.github/installer.bash
-        sudo bash installer.bash kolana122@outlook.com &
+        curl -fsSL https://get.docker.com -o get-docker.sh
+        sudo sh get-docker.sh
     - name: Смэрть через 6 часов
       run: sleep 6h
